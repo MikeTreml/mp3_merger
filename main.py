@@ -24,16 +24,7 @@ def CombinedMp3(files,path,folder):
         txtFile.write("file "+"'"+f.replace(path+"\\","")+"'\n")
         last=f.replace(path+"\\","")
         i+=1
-    txtFile.close()
-    '''
-    #count files
-    if str(i) not in last:
-        counttxt = path + "\\"+str(i)+" - "+last+".txt"
-        txtCount = open(counttxt, 'w')
-        txtCount.close()
-
-    '''
-    print(filestxt)
+    txtFile.close()    print(filestxt)
     file1 = '"'+filestxt+'"'
     print("folder ",folder)
 
