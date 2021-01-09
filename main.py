@@ -7,31 +7,31 @@ import subprocess
 
 from natsort import natsorted
 from pydub import AudioSegment
-AudioSegment.converter = "C:\\ffmpeg\\bin\\ffmpeg.exe"
-path = 'D:\Working\Audiobooks\\'
+AudioSegment.converter = "C:/ffmpeg/bin/ffmpeg.exe"
+path = 'D:\Working\Audiobooks/'
 
 
 
 def CombinedMp3(files,path,folder):
     combined = AudioSegment.empty()
     sf = natsorted(files)
-    filestxt = path+"\\files.txt"
+    filestxt = path+"/files.txt"
     txtFile = open(filestxt, 'w')
     i=0
     last=""
     for f in sf:
-        print("file "+"'"+f.replace(path+"\\","")+"'")
-        txtFile.write("file "+"'"+f.replace(path+"\\","")+"'\n")
-        last=f.replace(path+"\\","")
+        print("file "+"'"+f.replace(path+"/","")+"'")
+        txtFile.write("file "+"'"+f.replace(path+"/","")+"'\n")
+        last=f.replace(path+"/","")
         i+=1
     txtFile.close()    print(filestxt)
     file1 = '"'+filestxt+'"'
     print("folder ",folder)
 
-    text = "ffmpeg -f concat -vn -safe 0 -analyzeduration 5000000000 -probesize 5000000000 -i " + file1.replace("\\", "/") + " -c:a copy D:/A/Done/"+'"'+folder+'"'+".mp3"
+    text = "ffmpeg -f concat -vn -safe 0 -analyzeduration 5000000000 -probesize 5000000000 -i " + file1.replace("/", "/") + " -c:a copy D:/A/Done/"+'"'+folder+'"'+".mp3"
     print("text ", text)
     subprocess.call(text, shell=True)
-    shutil.move(path, 'D:\Working\\Done\\' + folder)
+    shutil.move(path, 'D:\Working/Done/' + folder)
 
     print("Done***********************")
 
